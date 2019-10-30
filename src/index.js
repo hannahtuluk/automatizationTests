@@ -30,19 +30,10 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
     //Open TempMail portal and re-link to Epam personal page
     await tempMail.open(driver)
 
-    // await driver.wait(until.urlIs('https://temp-mail.org/ru/'), 10000);
+    //Waiting for inviting message and finish registration there 
     await tempMail.waitForLoading(driver);
-
-    // const register = await driver.wait(until.elementLocated(
-    //   By.linkText("Реєстрація")), 10000);
-    // driver.executeScript("arguments[0].scrollIntoView()", register);
-    // await driver.findElement(By.linkText("Реєстрація")).click();
-
     await tempMail.registration(driver);
-    
     await tempMail.finishRegister(driver);
-    // await driver.wait(until.elementLocated(
-    //   By.partialLinkText("https://www.training.epam.ua/Auth/FinishRegister")), 10000).click();
 
   } catch (error) {
     console.log(error)
